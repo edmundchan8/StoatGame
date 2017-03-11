@@ -40,7 +40,7 @@ public class GroundBoardManager : MonoBehaviour
 
 	[Header ("GameObjects in game")]
 	[SerializeField]
-	GameObject m_Grass;
+	List <GameObject> m_Grass = new List<GameObject>();
 	[SerializeField]
 	GameObject m_Wall;
 	[SerializeField]
@@ -147,7 +147,7 @@ public class GroundBoardManager : MonoBehaviour
 				}
 				else
 				{
-					GameObject tileToInstantiate = m_Grass;
+					GameObject tileToInstantiate = m_Grass[Random.Range (0, m_Grass.Count)];
 					Vector3 tileVector3 = new Vector3(xWallPos, yWallPos, 0f);
 					GameObject tile = Instantiate(tileToInstantiate, tileVector3, Quaternion.identity) as GameObject;
 					tile.transform.parent = m_BoardHolder.transform;
